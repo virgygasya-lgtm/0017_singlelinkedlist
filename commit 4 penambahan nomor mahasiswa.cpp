@@ -27,3 +27,21 @@ public:
     Node *nodeBaru = new Node;
     nodeBaru->nomhs = nim;
     nodeBaru->next = NULL;
+
+    if (START == NULL || nim <= START->noMhs)
+{
+    if (START != NULL && nim == START->noMhs)
+    {
+        cout << "Duplikasi noMhs tidak diijinkan\n";
+        return;
+    }
+
+    nodeBaru->next = START;
+    START = nodeBaru;
+    return;
+}
+
+Node *previous = START;
+Node *current = START;
+
+while (current != NULL && nim > current->noMhs)
