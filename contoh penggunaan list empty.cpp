@@ -19,6 +19,7 @@ public:
     }
 
     void addNode()
+}
 {
     int nim;
     cout << "\nMasukkan Nomor Mahasiswa : ";
@@ -29,6 +30,7 @@ public:
     nodeBaru->next = NULL;
 
     if (START == NULL || nim <= START->noMhs)
+}
 {
     if (START != NULL && nim == START->noMhs)
     {
@@ -92,6 +94,28 @@ bool delNode(int nim)
 
     delete current;
     return true;
+}
+
+void traverse()
+{
+    if (listEmpty())
+{
+    cout << "\nList Kosong\n";
+}
+else
+{
+    cout << "\nData di dalam list adalah:\n";
+    Node *currentNode = START;
+
+    while (currentNode != NULL)
+    {
+        cout << currentNode->Nomhs << endl;
+        currentNode = currentNode->next;
+    }
+
+    cout << endl;
+}
+
 }
 
 
