@@ -4,7 +4,7 @@ using namespace std;
 
 class Node {
 public:
-    int noMhs;      
+    int noMhs;
     Node *next;
 };
 
@@ -99,14 +99,12 @@ public:
     }
 };
 
-int main()
-{
+int main() {
     LinkedList mhs;
     int nim;
     char ch;
 
-    do
-    {
+    do {
         cout << "\nMenu" << endl;
         cout << "1. Menambah data ke dalam list" << endl;
         cout << "2. Menghapus data dari dalam list" << endl;
@@ -117,23 +115,56 @@ int main()
         cout << "\nMasukkan pilihan (1-5): ";
         cin >> ch;
 
-        switch (ch)
-{
-    case '1':
-        mhs.addNode();
-        break;
-
-    case '2':
-        if (mhs.listEmpty())
-        {
-            cout << "\nList Kosong" << endl;
+        switch (ch) {
+        case '1':
+            mhs.addNode();
             break;
+
+        case '2':
+            if (mhs.listEmpty()) {
+                cout << "\nList Kosong" << endl;
+                break;
+            }
+            cout << "\nMasukkan no mahasiswa yang akan dihapus : ";
+            cin >> nim;
+
+            if (mhs.delNode(nim) == false)
+                cout << "\nData tidak ditemukan" << endl;
+            else
+                cout << "\nData dengan nomor mahasiswa " << nim << " berhasil dihapus\n";
+            break;
+
+        case '3':
+            mhs.traverse();
+            break;
+
+        case '4':
+            if (mhs.listEmpty())
+                cout << "\nList Kosong\n";
+            else {
+                cout << "\nMasukkan no mahasiswa yang dicari : ";
+                cin >> nim;
+                Node *prev, *curr;
+                if (mhs.search(nim, prev, curr))
+                    cout << "\nData ditemukan\nNIM Mahasiswa : " << curr->noMhs << endl;
+                else
+                    cout << "\nData tidak ditemukan\n";
+            }
+            break;
+
+        case '5':
+            cout << "\nKeluar dari program...\n";
+            break;
+
+        default:
+            cout << "\nPilihan salah\n";
         }
 
-        cout << "\nMasukkan no mahasiswa yang akan dihapus : ";
-        cin >> nim;
-    }
+    } while (ch != '5');
+
+    return 0;
 }
+
 
 
 
